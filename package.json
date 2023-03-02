@@ -1,0 +1,14 @@
+{
+  "name": "flightsandsearch",
+  "version": "1.0.0",
+  "description": "Micro Service for handling flight CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
