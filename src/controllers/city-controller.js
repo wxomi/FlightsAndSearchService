@@ -81,3 +81,10 @@ const update = async (req, res) => {
     });
   }
 };
+
+module.exports = {
+  create,
+  update,
+  get,
+  destroy,
+};
