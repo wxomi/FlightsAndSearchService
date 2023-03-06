@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { PORT } = require("./config/serverConfig");
+const { PORT, DB_SYNC } = require("./config/serverConfig");
 const db = require("./models/index");
 const ApiRoutes = require("./routes/index");
 
@@ -11,7 +11,7 @@ const setupAndStartServer = async () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use("/api", ApiRoutes);
-    if (process.env.DB_SYNC) {
+    if (DB_SYNC === true) {
       db.sequelize.sync({ alter: true }); //synchronize all models
     }
     // const city = await City.findOne({

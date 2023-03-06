@@ -1,24 +1,24 @@
 const { Op } = require("sequelize");
 
-const { City } = require("../models/index");
+const { Airport, City } = require("../models/index");
 
-class CityRepository {
-  async createCity(data) {
+class AirportRepository {
+  async createAirport(data) {
     try {
       console.log(data);
-      const city = await City.bulkCreate(data);
-      return city;
+      const airport = await Airport.bulkCreate(data);
+      return airport;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
       throw { error };
     }
   }
 
-  async deleteCity(cityId) {
+  async deleteAirport(airportId) {
     try {
-      await City.destroy({
+      await Airport.destroy({
         where: {
-          id: cityId,
+          id: airportId,
         },
       });
       return true;
@@ -28,57 +28,71 @@ class CityRepository {
     }
   }
 
-  async updateCity(cityId, data) {
+  async updateAirport(airportId, data) {
     //Data obj {name: prauagraj}
     try {
       // The below approach will also works but will not return updated object
       // if we are using Pg then returning: true can be used, else not
-      // const city = await City.update(data, {
+      // const airport = await Airport.update(data, {
       //   where: {
-      //     id: cityId,
+      //     id: airportId,
       //   },
       // });
       // For getting updated data in mysql we use the below approach
-      const city = await City.findByPk(cityId);
-      city.name = data.name;
-      await city.save();
-      return city;
+      const airport = await Airport.findByPk(airportId);
+      airport.name = data.name;
+      await airport.save();
+      return airport;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
       throw { error };
     }
   }
 
-  async getCity(cityId) {
+  async getAirport(airportId) {
     try {
-      const city = await City.findByPk(cityId);
-      return city;
+      const airport = await Airport.findByPk(airportId);
+      return airport;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
       throw { error };
     }
   }
 
-  async getAllCities({ name }) {
+  async getAllAirports({ name }) {
     // filter can be empty also
     try {
       if (name) {
-        const cities = await City.findAll({
+        const airports = await Airport.findAll({
           where: {
             name: {
               [Op.startsWith]: name,
             },
           },
         });
-        return cities;
+        return airports;
       }
-      const cities = await City.findAll();
-      return cities;
+      const airports = await Airport.findAll();
+      return airports;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
       throw { error };
     }
   }
+  async getAirportByCityId(cityId) {
+    try {
+      const airports = await Airport.findAll({
+        where: {
+          cityId: cityId,
+        },
+        include: [City],
+      });
+      return airports;
+    } catch (error) {
+      console.log("Something went wrong at Service Layer");
+      throw { error };
+    }
+  }
 }
 
-module.exports = CityRepository;
+module.exports = AirportRepository;
