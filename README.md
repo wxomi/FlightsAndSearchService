@@ -33,3 +33,15 @@
 - A Flight belongs to an airplane but one Airplane can be used in multiple Flights.
 - A City has many Airports but one Airport belongs to a City.
 - One Airpot has many Flights but a Flight belongs to one Airport.
+
+## Tables
+
+### City -> id, name, created_at, updated_at
+
+### Airport -> id, name, address, city_id, created_at, updated_at
+
+Relationship -> City has many airports and Airport belongs to a city (one to many)
+
+```
+npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+```
