@@ -19,24 +19,24 @@ module.exports = {
         allowNull: false,
       },
       departureAirportId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       arrivalAirportId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       arrivalTime: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       departureTime: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       price: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       boardinGate: {
         type: Sequelize.STRING,

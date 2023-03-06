@@ -1,6 +1,9 @@
 const express = require("express");
-const CityController = require("../../controllers/city-controller");
-const AirportController = require("../../controllers/airport-controller");
+const {
+  CityController,
+  AirportController,
+  FlightController,
+} = require("../../controllers/index");
 
 const router = express.Router();
 // CRUD CITIES
@@ -20,5 +23,8 @@ router.patch("/airport/:id", AirportController.update);
 // // //
 router.get("/cities/:cityId/airports", AirportController.getAirportsByCityId);
 // // //
+
+//CRUD FLIGHT
+router.post("/flights", FlightController.create);
 
 module.exports = router;
