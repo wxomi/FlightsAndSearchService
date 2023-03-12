@@ -1,8 +1,10 @@
 // const { Op } = require("sequelize");
 
+// const { CrudRepository } = require("./index");
+const CrudRepository = require("./crud-repository");
 const { Airport } = require("../models/index");
-const { CrudRepository } = require("./index");
 
+console.log(CrudRepository);
 class AirportRepository extends CrudRepository {
   constructor() {
     super(Airport);

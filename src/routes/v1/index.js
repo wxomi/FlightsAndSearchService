@@ -1,4 +1,5 @@
 const express = require("express");
+const { FlightMiddlewares } = require("../../middlewares/index");
 const {
   CityController,
   AirportController,
@@ -25,7 +26,11 @@ router.get("/cities/:cityId/airports", AirportController.getAirportsByCityId);
 // // //
 
 //CRUD FLIGHT
-router.post("/flights", FlightController.create);
+router.post(
+  "/flights",
+  FlightMiddlewares.validateCreateFlights,
+  FlightController.create
+);
 router.get("/flights", FlightController.getAll);
 
 module.exports = router;
