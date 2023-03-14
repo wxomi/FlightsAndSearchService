@@ -28,7 +28,7 @@ router.get("/cities/:cityId/airports", AirportController.getAirportsByCityId);
 //CRUD FLIGHT
 router.post(
   "/flights",
-  FlightMiddlewares.validateCreateFlights,
+  [FlightMiddlewares.validateCreateFlights],
   FlightController.create
 );
 router.get("/flights", FlightController.getAll);
