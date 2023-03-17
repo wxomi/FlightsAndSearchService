@@ -11,7 +11,7 @@ const setupAndStartServer = async () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use("/api", ApiRoutes);
-    if (DB_SYNC === true) {
+    if (DB_SYNC) {
       db.sequelize.sync({ alter: true }); //synchronize all models
     }
     // const city = await City.findOne({
