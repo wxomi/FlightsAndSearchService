@@ -35,16 +35,16 @@ class AirportRepository extends CrudRepository {
   // }
 
   // async updateAirport(airportId, data) {
-  //   //Data obj {name: prauagraj}
+  //Data obj {name: prauagraj}
   //   try {
-  //     // The below approach will also works but will not return updated object
-  //     // if we are using Pg then returning: true can be used, else not
-  //     // const airport = await Airport.update(data, {
-  //     //   where: {
-  //     //     id: airportId,
-  //     //   },
-  //     // });
-  //     // For getting updated data in mysql we use the below approach
+  // The below approach will also works but will not return updated object
+  // if we are using Pg then returning: true can be used, else not
+  // const airport = await Airport.update(data, {
+  //   where: {
+  //     id: airportId,
+  //   },
+  // });
+  // For getting updated data in mysql we use the below approach
   //     const airport = await Airport.findByPk(airportId);
   //     airport.name = data.name;
   //     await airport.save();

@@ -1,3 +1,5 @@
+const { ValidationError, AppError } = require("../utils/errors");
+
 class CrudRepository {
   constructor(model) {
     this.model = model;
@@ -8,7 +10,15 @@ class CrudRepository {
       const result = await this.model.create(data);
       return result;
     } catch (error) {
-      console.log("Something went wrong in CRUD Repository");
+      if (error.name == "SequelizeValidationError") {
+        throw new ValidationError(error);
+      }
+      throw new AppError(
+        "RepositoryError",
+        "Cannot Create in CRUD",
+        "There was some issue creating, please try again later",
+        StatusCodes.INTERNAL_SERVER_ERROR
+      );
     }
   }
 

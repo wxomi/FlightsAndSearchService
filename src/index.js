@@ -10,7 +10,7 @@ const setupAndStartServer = async () => {
   app.listen(PORT, async () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use("/api", ApiRoutes);
+    app.use("/flightservice/api", ApiRoutes);
     if (DB_SYNC) {
       db.sequelize.sync({ alter: true }); //synchronize all models
     }
