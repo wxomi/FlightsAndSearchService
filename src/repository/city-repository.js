@@ -5,7 +5,6 @@ const { City } = require("../models/index");
 class CityRepository {
   async createCity(data) {
     try {
-      console.log(data);
       const city = await City.bulkCreate(data);
       return city;
     } catch (error) {

@@ -25,7 +25,6 @@ const create = async (req, res) => {
 
 const destroy = async (req, res) => {
   try {
-    console.log(req.params.id);
     const response = await airportService.deleteAirport(req.params.id);
     return res.status(SuccessCodes.OK).json({
       data: response,
